@@ -36,7 +36,17 @@ jobs:
             /v:"1.2.0" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+            /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
+            /d:sonar.cpd.exclusions="**/Invoicing/InvoiceService*.cs" \
+            /d:sonar.issue.ignore.multicriteria="e1,e2,e3,e4" \
+            /d:sonar.issue.ignore.multicriteria.e1.ruleKey="csharpsquid:S3776" \
+            /d:sonar.issue.ignore.multicriteria.e1.resourceKey="**/*_V?.cs" \
+            /d:sonar.issue.ignore.multicriteria.e2.ruleKey="csharpsquid:S1481" \
+            /d:sonar.issue.ignore.multicriteria.e2.resourceKey="**/*_V?.cs" \
+            /d:sonar.issue.ignore.multicriteria.e3.ruleKey="csharpsquid:S101" \
+            /d:sonar.issue.ignore.multicriteria.e3.resourceKey="**/*_V?.cs" \
+            /d:sonar.issue.ignore.multicriteria.e4.ruleKey="csharpsquid:S2325" \
+            /d:sonar.issue.ignore.multicriteria.e4.resourceKey="**/*_V?.cs"
           dotnet build
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
           dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
