@@ -2,4 +2,7 @@
   <Folder Name="/src/">
     <Project Path="src/SonarCloudDemo/SonarCloudDemo.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SonarCloudDemo.Tests/SonarCloudDemo.Tests.csproj" />
+  </Folder>
 </Solution>
